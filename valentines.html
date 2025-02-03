@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Arial", sans-serif;
+            background-color: #ffebef;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff3366;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        button {
+            font-size: 20px;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        #yes {
+            background-color: #ff3366;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(255, 51, 102, 0.5);
+        }
+        #no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+        }
+        #message {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #ff4da6, #ff99cc, #ff4da6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(255, 51, 102, 0.5);
+            animation: glow 1.5s infinite alternate;
+            width: 60%;
+            margin: auto;
+        }
+        @keyframes glow {
+            from { box-shadow: 0px 0px 20px rgba(255, 51, 102, 0.8); }
+            to { box-shadow: 0px 0px 30px rgba(255, 51, 102, 1); }
+        }
+        .hidden {
+            display: none;
+        }
+        .confetti, .falling-name {
+            position: fixed;
+            top: -10px;
+            animation: fall 4s linear infinite;
+        }
+        .confetti {
+            width: 10px;
+            height: 10px;
+            background-color: #ff3366;
+            opacity: 0.7;
+        }
+        .falling-name {
+            font-size: 30px;
+            font-weight: bold;
+            color: gold;
+            text-shadow: 2px 2px 10px #ff66b2, 0 0 15px gold;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will You Be My Valentine? ❤</h1>
+    <button id="yes">Yes! 💖</button>
+    <button id="no">No 😢</button>
+
+    <div id="message" class="hidden">
+        <h2>💖 My Sweet Love, Salvina💖</h2>
+        <p>
+            From the moment I met you, my heart knew it had found its home. ❤  
+            You are the most beautiful, kind, and amazing person in my world.  
+            Every time I see you, my heart races like the stars dancing in the night sky. ✨  
+            I don’t need Valentine’s Day to remind me how special you are—every day with you is magical!  
+            I am so lucky to have you, and I can't wait to make more beautiful memories together. 💖  
+            I LOVE YOU! 😘  
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("yes").addEventListener("click", function() {
+            document.getElementById("message").style.display = "block";
+            document.getElementById("yes").style.display = "none";
+            document.getElementById("no").style.display = "none";
+            startCelebration();
+        });
+
+        document.getElementById("no").addEventListener("mouseover", function() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            this.style.left = x + "px";
+            this.style.top = y + "px";
+        });
+
+        function startCelebration() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                confetti.style.backgroundColor = ["#ff3366", "#ff99cc", "#ff4da6", "#ff6699"][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+
+            for (let i = 0; i < 20; i++) {
+                let name = document.createElement("div");
+                name.classList.add("falling-name");
+                name.innerText = "Salvina Sam ❤";
+                name.style.left = Math.random() * 100 + "vw"; 
+                name.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(name);
+                setTimeout(() => name.remove(), 5000);
+            }
+        }
+    </script>
+
+</body>
+</html>
